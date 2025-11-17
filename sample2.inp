@@ -1,0 +1,153 @@
+en01p1 1 en02p1 6 en03p1 1 en04p1 7 # # en04p2 7 # # en03p2 3 en04p3 1 # # en04p4 8
+# # en02p2 6 en03p3 7 en04p5 7 # # en04p6 5 # # en03p4 8 en04p7 4 # # en04p8 6 # #
+plazas_libres
+alta_barca b09 en03p3
+plazas_libres
+alta_barca b58 en03p1
+ab b10 en03p2
+ab b60 en04p6
+ab b75 en02p1
+ab b13 en04p2
+ab b24 en04p7
+ab b36 en04p8
+ab b62 en04p2
+ab b62 en04p7
+ab b41 en03p3
+ab b45 en04p4
+ab b43 en03p3
+ab b06 en02p2
+ab b42 en01p1
+ab b29 en04p4
+ab b28 en04p3
+ab b33 en01p1
+ab b14 en03p2
+ab b39 en04p1
+ab b71 en04p8
+ab b20 en03p2
+ab b51 en02p1
+ab b28 en02p2
+ab b46 en02p2
+ab b05 en04p2
+ab b40 en02p2
+ab b33 en04p2
+ab b11 en04p6
+ab b54 en04p5
+ab b43 en04p1
+ab b64 en04p2
+ab b77 en04p5
+ab b07 en04p5
+ab b20 en04p2
+ab b17 en04p7
+ab b19 en03p3
+ab b03 en04p4
+ab b71 en04p8
+ab b66 en04p5
+ab b52 en04p1
+ab b01 en03p3
+ab b65 en04p1
+ab b12 en02p1
+ab b30 en04p2
+ab b51 en04p7
+ab b16 en04p7
+baja_barca b06
+bb b08
+bb b67
+bb b51
+bb b64
+bb b05
+plazas_libres
+barcas_estacion en01p1
+be en02p1
+be en02p2
+be en03p1
+be en03p2
+be en03p3
+be en03p4
+be en04p1
+be en04p2
+be en04p3
+be en04p4
+be en04p5
+be en04p6
+be en04p7
+be en04p8
+subir_barcas
+barcas_estacion en01p1
+be en02p1
+be en02p2
+be en03p1
+be en03p2
+be en03p3
+be en03p4
+be en04p1
+be en04p2
+be en04p3
+be en04p4
+be en04p5
+be en04p6
+be en04p7
+be en04p8
+mb b30 en03p1
+mb b12 en04p3
+mb b54 en04p8
+mb b07 en04p7
+mb b28 en03p3
+mb b66 en02p2
+mb b36 en04p5
+mb b45 en04p2
+mb b19 en04p8
+mb b45 en03p4
+mb b17 en03p2
+mb b24 en03p4
+mb b13 en04p5
+mb b39 en04p3.
+mb b16 en03p4
+mb b07 en03p3
+mb b30 en04p5
+mb b29 en04p6
+mb b29 en03p2
+mb b30 en04p1
+mb b52 en04p4
+mb b33 en04p7
+plazas_libres
+modificar_capacidad en01p1 10
+plazas_libres
+viajes_barca b12
+vb b14
+vb b19
+vb b29
+vb b30
+vb b33
+vb b36
+vb b39
+vb b45
+vb b52
+vb b75
+vb b76
+vb b77
+barcas_estacion en01p1
+be en02p1
+be en02p2
+be en03p1
+be en03p2
+be en03p3
+be en03p4
+be en04p1
+be en04p2
+be en04p3
+be en04p4
+be en04p5
+be en04p6
+be en04p7
+be en04p8
+asignar_estacion b1Z
+ae b2Z
+ae b3Z
+ae b4Z
+ae b5Z
+ae b6Z
+ae b7Z
+ae b8Z
+ae b9Z
+ae b10Z
+fin

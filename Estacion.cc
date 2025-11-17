@@ -2,7 +2,10 @@
     
     // Constructores
 
-    Estacion::Estacion(string nom_estacion){}
+    Estacion::Estacion(string nom_estacion, int capacitat){
+        id = nom_estacion;
+        this->capacitat = capacitat;
+    }
     /* Pre: cert */
     /* Post: el resultat es una barca amb id = nom_estacio*/
 

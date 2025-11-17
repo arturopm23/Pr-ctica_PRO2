@@ -1,14 +1,37 @@
 #include "Rio.hh"
     // Constructores
 
+    BinTree<string> Rio::construir_arbol(){
+        string id;
+        int capacitat;
+        cin >> id >> capacitat;
+        if (id == "#"){
+            return BinTree<string>();
+        }
+        Estacion e(id, capacitat);
+        dicc_estacion.insert({id, e});
+        BinTree<string> left = construir_arbol();
+        BinTree<string> right = construir_arbol();
+        return BinTree<string>(id, left, right);
+    }
+
     Rio::Rio(){
+        BinTree<string> b = construir_arbol();
     }
     /* Pre: cert */
     /* Post: el resultat es un riu amb les seves estacions*/
 
     // Modificadores
 
-    void Rio::alta_barca(string id_barca, string id_estacion, Cjt_barcas& mis_barcas){}
+    void Rio::alta_barca(string id_barca, string id_estacion, Cjt_barcas& mis_barcas){
+        if (not existe_estacion(id_estacion)){
+            cout << "error: la estacion no existe" << endl;
+        } else if (estacion_llena(id_estacion)){
+            cout << "error: la barca no cabe" << endl;
+        } else {
+            dicc_estacion[id_estacion].alta_barca_est(id_barca);
+        }
+    }
     /* Pre: la barca no existeix i la estacio no esta plena */
     /* Post: afegim la nova barca a la estacio*/
 
@@ -47,6 +70,16 @@
     bool Rio::existe_estacion(string id_estacion){}
     /* Pre: id d'una estacio */
     /* Post: retorna true si al conjunt existeix una estacio amb id_estacion*/
+
+    bool Rio::estacion_llena(string id_estacion){
+        bool result = false;
+        if (existe_estacion(id_estacion)){
+            result = dicc_estacion[id_estacion].estacion_llena();
+        }
+        return result;
+    }
+    /* Pre: la estacio existeis*/
+    /* Post: retorna true si la estacio esta plena*/
 
 
     // Lectura i escriptura

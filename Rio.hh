@@ -17,6 +17,9 @@ class Rio {
  private:
     BinTree<string> riu;
     map<string, Estacion> dicc_estacion;
+
+    BinTree<string> construir_arbol();
+
     /*
       Invariant de la representacio:
             - 
@@ -72,6 +75,7 @@ class Rio {
     /* Pre: id d'una estacio */
     /* Post: retorna true si al conjunt existeix una estacio amb id_estacion*/
 
+    bool Rio::estacion_llena(string id_estacion);
 
     // Lectura i escriptura
 

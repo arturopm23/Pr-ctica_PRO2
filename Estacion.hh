@@ -27,7 +27,7 @@ class Estacion {
 
     // Constructores
 
-    Estacion(string nom_estacion);
+    Estacion(string nom_estacion, int capacitat);
     /* Pre: cert */
     /* Post: el resultat es una barca amb id = nom_estacio*/
 
