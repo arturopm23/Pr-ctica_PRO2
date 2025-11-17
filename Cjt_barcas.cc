@@ -55,20 +55,32 @@
     /* Post: imprimim la estació de la barca*/
 
     void Cjt_barcas::viajes_barca(string id_barca){
-
+        if (dicc_estacion.count(id_barca)){
+            dicc_estacion[id_barca].viajes_barca();
+        } else {
+            cout << "error: la barca no existe" << endl;
+        }
     }
     /* Pre: la barca existeix */
     /* Post: imprimim els viatjes que ha fet la barca*/
 
 
     string Cjt_barcas::imprimir_estacio(string id_barca){
-
+        if (dicc_estacion.count(id_barca)){
+            dicc_estacion[id_barca].estacion_barca();
+        } else {
+            cout << "error: la barca no existe" << endl;
+        }
     }
     /* Pre: la barca existe */
     /* Post: l'id de sa estacio*/
 
     bool Cjt_barcas::existe_barca(string id_barca){
-
+        bool result = false;
+        if (dicc_estacion.count(id_barca)){
+            result = true;
+        }
+        return result;
     }
     /* Pre: id d'una barca */
     /* Post: retorna true si existeix una barca amb id_barca al conjunt*/
