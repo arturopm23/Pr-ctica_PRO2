@@ -8,7 +8,7 @@
         this->id_estacio = id_estacio;
     }
     /* Pre: cert */
-    /* Post: el resultat es una barca amb id = nom_barca i la seva estacio*/
+    /* Post: el resultat es una barca amb id = id_barca i la seva estacio*/
 
     // Modificadores
 
@@ -18,9 +18,17 @@
     /* Pre: cert*/
     /* Post: la barca forma part de la nova estacio*/
 
+    void Barca::guardar_viaje(string origen, string destino){
+        viajes.push_back(make_pair(origen, destino));
+    }
+    /* Pre: cert
+    Post: guardamos el nuevo viaje en el vector viajes como pareja de strings*/
+
+    
+
     // Consultores
 
-    void Barca::estacion_barca(){
+    void Barca::imprimir_estacion(){
         cout << id_estacio << endl;
     }
     /* Pre: la barca existeix */

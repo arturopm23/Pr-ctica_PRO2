@@ -12,7 +12,7 @@ class Cjt_barcas {
     // Descripcio del tipus: 
 
  private:
-    map<string, Barca> dicc_estacion;
+    map<string, Barca> dicc_barca;
     /*
       Invariant de la representacio:
             
@@ -28,9 +28,10 @@ class Cjt_barcas {
 
     // Modificadores
 
-    void alta_barca_cjt(string id_barca, string id_estacio);
+    bool alta_barca_cjt(string id_barca, string id_estacio);
     /* Pre: la barca no existeix*/
-    /* Post: la nueva barca forma parte del conjunto*/
+    /* Post: la nueva barca forma parte del conjunto, true si incorporamos la barca, false sino*/
+
 
     void baja_barca_cjt(string id_barca);
     /* Pre: la barca existe*/
@@ -42,18 +43,11 @@ class Cjt_barcas {
 
     // Consultores
 
-    void estacion_barca(string id_barca);
-    /* Pre: la barca existeix */
-    /* Post: imprimim la estació de la barca*/
+   void Cjt_barcas::viajes_barca(string id_barca);
 
-    void viajes_barca(string id_barca);
-    /* Pre: la barca existeix */
-    /* Post: imprimim els viatjes que ha fet la barca*/
-
-
-    string imprimir_estacio(string id_barca);
-    /* Pre: la barca existe */
-    /* Post: l'id de sa estacio*/
+   string Cjt_barcas::estacion_barca(string id_barca);
+   /*Pre: cert
+   Post: retornem la estacio de la barca*/
 
     bool existe_barca(string id_barca);
     /* Pre: id d'una barca */

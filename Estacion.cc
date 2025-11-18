@@ -34,6 +34,8 @@
     void Estacion::nova_capacitat(int nova_cap){
         if (id_barcas.size() + 1 <= nova_cap){
             capacitat = nova_cap;
+        } else {
+            cout << "error: capacidad insuficiente" << endl;
         }
     }
     /* Pre: la nova capacitat es >= nº barcas actual */

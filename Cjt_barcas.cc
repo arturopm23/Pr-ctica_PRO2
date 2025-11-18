@@ -9,20 +9,23 @@
 
     // Modificadores
 
-    void Cjt_barcas::alta_barca_cjt(string id_barca, string id_estacio){
-        if (dicc_estacion.count(id_barca)){
+    bool Cjt_barcas::alta_barca_cjt(string id_barca, string id_estacio){
+        bool result = true;
+        if (dicc_barca.count(id_barca)){
+            result = false;
             cout << "error: la barca ya existe" << endl;
         } else {
             Barca b1 = Barca(id_barca, id_estacio);
-            dicc_estacion.emplace(b1);
+            dicc_barca.emplace(b1);
         }
+        return result;
     }
     /* Pre: la barca no existeix*/
-    /* Post: la nueva barca forma parte del conjunto*/
+    /* Post: la nueva barca forma parte del conjunto, true si incorporamos la barca, false sino*/
 
     void Cjt_barcas::baja_barca_cjt(string id_barca){
-        if (dicc_estacion.count(id_barca)){
-            dicc_estacion.erase(id_barca);
+        if (dicc_barca.count(id_barca)){
+            dicc_barca.erase(id_barca);
         } else {
             cout << "error: la barca no existe" << endl;
         }
@@ -31,12 +34,13 @@
     /* Post: la barca ya no forma parte del conjunto*/
 
     void Cjt_barcas::mover_barca(string id_barca, string id_estacion){
-        if (not dicc_estacion.count(id_barca)){
+        if (not dicc_barca.count(id_barca)){
             cout << "error: la barca no existe" << endl;
-        } else if (dicc_estacion[id_barca].consultar_estacio() == id_estacion){
+        } else if (dicc_barca[id_barca].consultar_estacio() == id_estacion){
             cout << "error: la barca ya esta en el sitio" << endl;
         } else {
-            dicc_estacion[id_barca].mod_estacio(id_estacion);
+            dicc_barca[id_barca].guardar_viaje(dicc_barca[id_barca].consultar_estacio(), id_estacion);
+            dicc_barca[id_barca].mod_estacio(id_estacion);
         }
     }
     /* Pre: la barca existeix, la estació destí és diferent de l'origen, la estació destí no està plena */
@@ -44,43 +48,16 @@
 
     // Consultores
 
-    void Cjt_barcas::estacion_barca(string id_barca){
-        if (dicc_estacion.count(id_barca)){
-            dicc_estacion[id_barca].estacion_barca();
-        } else {
-           cout << "error: la barca no existe" << endl; 
-        }
-    }
-    /* Pre: la barca existeix */
-    /* Post: imprimim la estació de la barca*/
-
     void Cjt_barcas::viajes_barca(string id_barca){
-        if (dicc_estacion.count(id_barca)){
-            dicc_estacion[id_barca].viajes_barca();
-        } else {
-            cout << "error: la barca no existe" << endl;
-        }
+        dicc_barca[id_barca].viajes_barca();
     }
-    /* Pre: la barca existeix */
-    /* Post: imprimim els viatjes que ha fet la barca*/
 
-
-    string Cjt_barcas::imprimir_estacio(string id_barca){
-        if (dicc_estacion.count(id_barca)){
-            dicc_estacion[id_barca].estacion_barca();
-        } else {
-            cout << "error: la barca no existe" << endl;
-        }
+    string Cjt_barcas::estacion_barca(string id_barca){
+        return dicc_barca[id_barca].consultar_estacio();
     }
-    /* Pre: la barca existe */
-    /* Post: l'id de sa estacio*/
 
     bool Cjt_barcas::existe_barca(string id_barca){
-        bool result = false;
-        if (dicc_estacion.count(id_barca)){
-            result = true;
-        }
-        return result;
+        return dicc_barca.count(id_barca);
     }
     /* Pre: id d'una barca */
     /* Post: retorna true si existeix una barca amb id_barca al conjunt*/

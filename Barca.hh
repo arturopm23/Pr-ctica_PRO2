@@ -36,7 +36,7 @@ class Barca {
 
     // Consultores
 
-    void estacion_barca();
+    void imprimir_estacion();
     /* Pre: la barca existeix */
     /* Post: imprimim la estació de la barca*/
 
@@ -47,6 +47,11 @@ class Barca {
     void viajes_barca();
     /* Pre: cert*/
     /* Post: imprimim els viatjes que ha fet la barca*/
+
+    void guardar_viaje(string origen, string destino);
+    /* Pre: cert
+    Post: guardamos el nuevo viaje en el vector viajes como pareja de strings*/
+
 
     // Lectura i escriptura
 
