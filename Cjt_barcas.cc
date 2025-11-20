@@ -51,9 +51,13 @@
     }
 
     string Cjt_barcas::estacion_barca(string id_barca){
-        string result = "";
        auto it = dicc_barca.find(id_barca);
        return it->second.consultar_estacion();
+    }
+
+    void  Cjt_barcas::imprimir_estacion_barca(string id_barca){
+       auto it = dicc_barca.find(id_barca);
+       return it->second.imprimir_estacion();
     }
 
     bool Cjt_barcas::existe_barca(string id_barca){

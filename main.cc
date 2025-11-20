@@ -29,7 +29,7 @@ int main()
         {
             string id_barca;
             cin >> id_barca;
-            mis_barcas.estacion_barca(id_barca); //Imprimim en què estació està la barca
+            mis_barcas.imprimir_estacion_barca(id_barca); //Imprimim en què estació està la barca
         }
         else if (op == "viajes_barca" or op == "vb")
         {
@@ -57,6 +57,7 @@ int main()
             rio.modificar_capacidad(id_estacion, nueva_cap); //Canviem la capacitat d'una estació del rio
         }
         else if (op == "plazas_libres" or op == "pl"){
+            cout << "#pl" << endl;
             rio.plazas_libres(); //Imprimim el nº total de places lliures de totes les estacions del riu
         }
         else if (op == "subir_barcas" or op == "sb"){

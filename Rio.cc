@@ -3,12 +3,14 @@
 
     BinTree<string> Rio::construir_arbol(){
         string id;
-        int capacitat;
-        cin >> id >> capacitat;
+        cin >> id;
         if (id == "#"){
             return BinTree<string>();
         }
-        Estacion e(id, capacitat);
+        int capacidad;
+        cin >> capacidad;
+        plazas_disp += capacidad;
+        Estacion e(id, capacidad);
         dicc_estacion.insert({id, e});
         BinTree<string> left = construir_arbol();
         BinTree<string> right = construir_arbol();
@@ -16,6 +18,7 @@
     }
 
     Rio::Rio(){
+        plazas_disp = 0;
         rio = construir_arbol();
     }
 
@@ -29,6 +32,7 @@
          cout << "error: la barca no cabe" << endl;
         } else {
         if (mis_barcas.alta_barca_cjt(id_barca, id_estacion)){
+        --plazas_disp;
          it->second.alta_barca_est(id_barca);
         }
     }
@@ -40,11 +44,12 @@
         auto it = dicc_estacion.find(id_est_ant);
     if (it != dicc_estacion.end()) {
             it->second.baja_barca_est(id_barca);
-        }
-        mis_barcas.baja_barca_cjt(id_barca);
+            mis_barcas.baja_barca_cjt(id_barca);
+            ++plazas_disp;
     } else {
         cout << "error: la barca no existe" << endl;
     }
+}
 }
 
     void Rio::mover_barca(string id_barca, string id_estacion, Cjt_barcas& mis_barcas){
@@ -69,11 +74,13 @@
     }
     
     void Rio::modificar_capacidad(string id_estacion, int nueva_cap){
-        auto it = dicc_estacion.find(id_estacion);  // FIXED: Use find
+    auto it = dicc_estacion.find(id_estacion);
     if (it == dicc_estacion.end()) {
         cout << "error: la estacion no existe" << endl;
     } else {
-        it->second.nova_capacitat(nueva_cap);
+        int diff = nueva_cap - it->second.consultar_capacidad();
+        plazas_disp += diff;
+        it->second.nueva_capacidad(nueva_cap);
     }
     }
 
@@ -87,7 +94,9 @@
     
     void Rio::barca_estacion(string id_estacion){}
 
-    void Rio::plazas_libres(){}
+    void Rio::plazas_libres(){
+        cout << plazas_disp << endl;
+    }
 
     bool Rio::existe_estacion(string id_estacion){
         return dicc_estacion.count(id_estacion);

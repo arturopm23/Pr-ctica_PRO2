@@ -39,11 +39,15 @@ class Estacion {
     /* Pre: la barca existeix*/
     /* Post: esborrem la barca de la estacio */
 
-    void nova_capacidad(int nova_cap);
+    void nueva_capacidad(int nova_cap);
     /* Pre: la nova capacidad es >= nº barcas actual */
     /* Post: la estacio te la nova capacidad*/
     
     // Consultores
+
+    int consultar_capacidad();
+    /* Pre: cert*/
+    /* Post: retornem un enter amb la capacitat total de la estacio */
 
     void imprimir_barcas();
     /* Pre: cert*/

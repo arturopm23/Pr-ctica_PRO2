@@ -25,7 +25,7 @@
         }
     }
 
-    void Estacion::nova_capacidad(int nova_cap){
+    void Estacion::nueva_capacidad(int nova_cap){
         if (barcas.size() + 1 <= nova_cap){
             capacidad = nova_cap;
         } else {
@@ -34,6 +34,10 @@
     }
     
     // Consultores
+
+    int Estacion::consultar_capacidad(){
+        return capacidad;
+    }
 
     void Estacion::imprimir_barcas(){
         auto it = barcas.begin();
@@ -45,7 +49,7 @@
 
     bool Estacion::estacion_llena(){
         bool resultat = false;
-        if (capacidad = barcas.size() + 1){
+        if (capacidad <= barcas.size()){
             resultat = true;
         }
         return resultat;

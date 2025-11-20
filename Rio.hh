@@ -19,6 +19,7 @@ class Rio {
     map<string, Estacion> dicc_estacion;
 
     BinTree<string> construir_arbol();
+    int plazas_disp;
 
     /*
       Invariant de la representacio:

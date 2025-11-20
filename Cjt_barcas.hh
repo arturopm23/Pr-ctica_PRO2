@@ -50,8 +50,13 @@ class Cjt_barcas {
    Post: retornem la estacio de la barca*/
 
     bool existe_barca(string id_barca);
-    /* Pre: id d'una barca */
+    /* Pre: lid_barca vàlid*/
     /* Post: retorna true si existeix una barca amb id_barca al conjunt*/
+
+    void imprimir_estacion_barca(string id_barca);
+    /* Pre: la  barca existeix*/
+    /* Post: imprimim la estacio de la barca*/
+
 
     // Lectura i escriptura
 
