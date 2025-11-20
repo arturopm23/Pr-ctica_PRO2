@@ -1,52 +1,37 @@
 #include "Barca.hh"
-    // Tipus de modul: dades
-    // Descripcio del tipus: 
 
+    //Constructores
 
-    Barca::Barca(string id_barca, string id_estacio){
+    Barca::Barca(string id_barca, string id_estacion){
         id = id_barca;
-        this->id_estacio = id_estacio;
+        this->id_estacion = id_estacion;
     }
-    /* Pre: cert */
-    /* Post: el resultat es una barca amb id = id_barca i la seva estacio*/
 
     // Modificadores
 
-   void Barca::mod_estacio(string id_estacio){
-        this->id_estacio = id_estacio;
+   void Barca::mod_estacio(string id_estacion){
+        this->id_estacion = id_estacion;
    }
-    /* Pre: cert*/
-    /* Post: la barca forma part de la nova estacio*/
 
     void Barca::guardar_viaje(string origen, string destino){
         viajes.push_back(make_pair(origen, destino));
     }
-    /* Pre: cert
-    Post: guardamos el nuevo viaje en el vector viajes como pareja de strings*/
-
-    
 
     // Consultores
 
     void Barca::imprimir_estacion(){
-        cout << id_estacio << endl;
+        cout << id_estacion << endl;
     }
-    /* Pre: la barca existeix */
-    /* Post: imprimim la estació de la barca*/
 
     void Barca::viajes_barca(){
         for (int i = 0; i < viajes.size(); ++i){
             cout << viajes[i].first << " " << viajes[i].second << endl;
         }
     }
-    /* Pre: la barca existeix */
-    /* Post: imprimim els viatjes que ha fet la barca*/
 
-    string Barca::consultar_estacio(){
-        return id_estacio;
+    string Barca::consultar_estacion(){
+        return id_estacion;
     }
-    /* Pre: cert*/
-    /* Post: retornem l'id_estacio de la barca*/
 
     // Lectura i escriptura
 

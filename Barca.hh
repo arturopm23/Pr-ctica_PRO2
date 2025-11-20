@@ -8,29 +8,29 @@ using namespace std;
 
 
 class Barca {
-    // Tipus de modul: dades
-    // Descripcio del tipus: 
 
  private:
     string id;
     vector< pair< string, string> > viajes;
-    string id_estacio;
+    string id_estacion;
     /*
       Invariant de la representacio:
             - id = comença obligatoriament amb una lletra i consta nomes de lletres i dígits
+            -viajes = vector de parells amb el primer element origen i segon destí
+            - id_estacion = mateixos requisits que id, representa el id de la estacio on tenim la barca
     */
 
  public:
 
     // Constructores
 
-    Barca(string id_barca, string id_estacio);
+    Barca(string id_barca, string id_estacion);
     /* Pre: cert */
-    /* Post: el resultat es una barca amb id = nom_barca i la seva estacio*/
+    /* Post: el resultat es una barca amb id = nom_barca, la seva estacio i un vector buit de viatjes*/
 
     // Modificadores
 
-   void mod_estacio(string id_estacio);
+   void mod_estacio(string id_estacion);
     /* Pre: cert*/
     /* Post: la barca forma part de la nova estacio*/
 
@@ -40,9 +40,9 @@ class Barca {
     /* Pre: la barca existeix */
     /* Post: imprimim la estació de la barca*/
 
-    string consultar_estacio();
+    string consultar_estacion();
     /* Pre: cert*/
-    /* Post: retornem l'id_estacio de la barca*/
+    /* Post: retornem l'id_estacion de la barca*/
 
     void viajes_barca();
     /* Pre: cert*/

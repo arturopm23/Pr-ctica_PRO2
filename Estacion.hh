@@ -9,51 +9,49 @@
 using namespace std;
 
 class Estacion {
-    // Tipus de modul: dades
-    // Descripcio del tipus: 
 
  private:
     string id;
-    int capacitat;
-    set<string> id_barcas;
+    int capacidad;
+    set<string> barcas;
     /*
       Invariant de la representacio:
       - id = comença obligatoriament amb una lletra i consta nomes de lletres i dígits
-      - capacitat = quantes places té la nostre estacio
-      - barcas = set de barcas ordenado por su nombre
+      - capacidad = quantes places té la nostre estacio
+      - barcas = set de id de barcas ordenado
     */
 
  public:
 
     // Constructores
 
-    Estacion(string nom_estacion, int capacitat);
+    Estacion(string nom_estacion, int capacidad);
     /* Pre: cert */
     /* Post: el resultat es una barca amb id = nom_estacio*/
 
     // Modificadores
 
     void alta_barca_est(string id_barca);
-    /* Pre: llegim id_barca on la barca no existeix i la capacitat de la estacio es menor al maxim*/
+    /* Pre: llegim id_barca on la barca no existeix i la capacidad de la estacio es menor al maxim*/
     /* Post: afegim la barca al set de la estacio*/
 
     void baja_barca_est(string id_barca);
     /* Pre: la barca existeix*/
     /* Post: esborrem la barca de la estacio */
 
-    void nova_capacitat(int nova_cap);
-    /* Pre: la nova capacitat es >= nº barcas actual */
-    /* Post: la estacio te la nova capacitat*/
+    void nova_capacidad(int nova_cap);
+    /* Pre: la nova capacidad es >= nº barcas actual */
+    /* Post: la estacio te la nova capacidad*/
     
     // Consultores
 
-    void imprimir_barques();
+    void imprimir_barcas();
     /* Pre: cert*/
     /* Post: imprimim el nom de les barques de la estació*/
 
     bool estacion_llena();
     /* Pre: cert*/
-    /* Post: retorna true si la mida d'id_barcas >= a la capacitat de la estacio*/
+    /* Post: retorna true si la mida d'id_barcas >= a la capacidad de la estacio*/
 
     // Lectura i escriptura
 

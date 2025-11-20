@@ -8,14 +8,12 @@ using namespace std;
 
 
 class Cjt_barcas {
-    // Tipus de modul: dades
-    // Descripcio del tipus: 
 
  private:
     map<string, Barca> dicc_barca;
     /*
       Invariant de la representacio:
-            
+            - dicc_barca: mapa donde la clave de cada barca es su id y contiene su objeto Barca
     */
 
  public:
@@ -44,6 +42,8 @@ class Cjt_barcas {
     // Consultores
 
    void viajes_barca(string id_barca);
+   /* Pre: la barca existeix*/
+   /* Post: imprimim els viatjes que ha fet una barca del diccionari*/
 
    string estacion_barca(string id_barca);
    /*Pre: cert

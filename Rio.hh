@@ -76,6 +76,8 @@ class Rio {
     /* Post: retorna true si al conjunt existeix una estacio amb id_estacion*/
 
     bool estacion_llena(string id_estacion);
+    /* Pre: la estacio existeix*/
+    /* Post: retornem true si capacidad == nº elements de la estacio*/
 
     // Lectura i escriptura
 
