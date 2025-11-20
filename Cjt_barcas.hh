@@ -43,9 +43,9 @@ class Cjt_barcas {
 
     // Consultores
 
-   void Cjt_barcas::viajes_barca(string id_barca);
+   void viajes_barca(string id_barca);
 
-   string Cjt_barcas::estacion_barca(string id_barca);
+   string estacion_barca(string id_barca);
    /*Pre: cert
    Post: retornem la estacio de la barca*/
 

@@ -15,7 +15,7 @@ class Rio {
     // Descripcio del tipus: 
 
  private:
-    BinTree<string> riu;
+    BinTree<string> rio;
     map<string, Estacion> dicc_estacion;
 
     BinTree<string> construir_arbol();
@@ -75,7 +75,7 @@ class Rio {
     /* Pre: id d'una estacio */
     /* Post: retorna true si al conjunt existeix una estacio amb id_estacion*/
 
-    bool Rio::estacion_llena(string id_estacion);
+    bool estacion_llena(string id_estacion);
 
     // Lectura i escriptura
 
