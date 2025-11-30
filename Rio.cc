@@ -33,11 +33,22 @@
         auto it_right = dicc_estacion.find(rio.right().value());
         auto it = dicc_estacion.find(rio.value());
 
-        while (it_left->second.consultar_aforo() > 0 and it_right->second.consultar_aforo() > 0 and it->second.consultar_capacidad() >= 2){
+        int it_left_aforo = it_left->second.consultar_aforo();
+        int it_right_aforo = it_right->second.consultar_aforo();
+        int it_capacidad = it->second.consultar_capacidad();
+
+        int voltes = it_capacidad/2;
+        if (it_left_aforo < voltes){
+            voltes = it_left_aforo;
+        }
+        if (it_right_aforo < voltes){
+            voltes = it_right_aforo;
+        }
+
+       for (int i = 0; i < voltes; ++i){
             mover_barca(it_left->second.consultar_idBarca_petit(), it->first, mis_barcas);
             mover_barca(it_right->second.consultar_idBarca_petit(), it->first, mis_barcas);
         }
-        BinTree<string> resultat(rio.value(), rio.left(), rio.right());
         return;
     }
 
@@ -117,21 +128,23 @@
         subir_barcas_aux(mis_barcas, rio);
     }
 
-    pair<string,int > Rio::asignar_estacion_aux(const BinTree<string>& rio){
-        if (rio.empty()){
-            return make_pair("",1);
+        pair<string,double > Rio::asignar_estacion_aux(const BinTree<string>& rio){
+            if (rio.empty()){
+                return make_pair("",1);
+            }
+            pair<string,double > rio_left = asignar_estacion_aux(rio.left());
+            pair<string,double > rio_right = asignar_estacion_aux(rio.right());
+
+            double ocupacio = (dicc_estacion.at(rio.value()).consultar_aforo()) / double(dicc_estacion.at(rio.value()).consultar_capacidad_total());
+
+            if (ocupacio <= rio_left.second and ocupacio <= rio_right.second){
+                return make_pair(rio.value(), ocupacio);
+            } else if (rio_right.second < rio_left.second){
+                return rio_right;
+            } else {
+                return rio_left;
+            }
         }
-        pair<string,int > rio_left = asignar_estacion_aux(rio.left());
-        pair<string,int > rio_right = asignar_estacion_aux(rio.right());
-        int ocupacio = (dicc_estacion.at(rio.value()).consultar_aforo()) / (dicc_estacion.at(rio.value()).consultar_capacidad_total());
-        if (ocupacio <= rio_left.second and ocupacio <= rio_right.second){
-            return make_pair(rio.value(), ocupacio);
-        } else if (rio_left.second <= rio_right.second){
-            return rio_left;
-        } else {
-            return rio_right;
-        }
-    }
 
     void Rio::asignar_estacion(string id_barca, Cjt_barcas& mis_barcas){
      if (mis_barcas.existe_barca(id_barca)){
@@ -139,7 +152,7 @@
     } else if (plazas_disp < 1){
         cout << "error: no hay plazas libres" << endl;
     } else {
-        pair<string, int> result = asignar_estacion_aux(rio);
+        pair<string, double> result = asignar_estacion_aux(rio);
         cout << result.first << endl;
         alta_barca(id_barca, result.first, mis_barcas);
     }

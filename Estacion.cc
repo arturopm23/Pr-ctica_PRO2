@@ -33,13 +33,7 @@
 
     string Estacion::consultar_idBarca_petit(){
         auto it = barcas.begin();
-        string id_petit = *it;
-        ++it;
-        while (it != barcas.end()){
-            if (*it < id_petit) id_petit = *it;
-            ++it;
-        }
-        return id_petit; 
+        return *it; 
     }
 
     int Estacion::consultar_capacidad(){

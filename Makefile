@@ -17,7 +17,7 @@ Rio.o: Rio.cc Rio.hh Estacion.hh
 	g++ -c Rio.cc
 
 clean:
-	rm -f pro.exe *.o
+	rm -f pro.exe *.o *.out
 
 tar:
 	tar -cvf projecte.tar *

@@ -59,7 +59,8 @@
     }
 
     bool Cjt_barcas::existe_barca(string id_barca){
-        return dicc_barca.count(id_barca);
+        auto it = dicc_barca.find(id_barca);
+       return it != dicc_barca.end();
     }
 
     // Lectura i escriptura

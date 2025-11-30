@@ -27,6 +27,8 @@ class Rio {
     */
     void subir_barcas_aux(Cjt_barcas& mis_barcas, const BinTree<string>& rio);
 
+    pair<string,double > asignar_estacion_aux(const BinTree<string>& rio);
+
  public:
 
     // Constructores
@@ -36,8 +38,6 @@ class Rio {
     /* Post: el resultat es un riu amb les seves estacions i un conjunt de barques*/
 
     // Modificadores
-
-    pair<string,int > asignar_estacion_aux(const BinTree<string>& rio);
 
     void alta_barca(string id_barca, string id_estacion, Cjt_barcas& mis_barcas);
     /* Pre: la barca no existeix i la estacio no esta plena */
