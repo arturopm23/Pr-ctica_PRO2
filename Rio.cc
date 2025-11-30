@@ -17,6 +17,32 @@
         return BinTree<string>(id, left, right);
     }
 
+    BinTree<string> Rio::subir_barcas_aux(Cjt_barcas& mis_barcas, BinTree<string> rio){
+        if (rio.empty()){
+            BinTree<string> resultat;
+            return resultat;
+        }
+
+        BinTree<string> rio_left = subir_barcas_aux(mis_barcas, rio.left());
+        BinTree<string> rio_right = subir_barcas_aux(mis_barcas, rio.right());
+
+        if (rio_left.empty() or rio_right.empty()){
+            BinTree<string> resultat(rio.value());
+            return resultat;
+        }
+
+        auto it_left = dicc_estacion.find(rio_left.value());
+        auto it_right = dicc_estacion.find(rio_right.value());
+        auto it = dicc_estacion.find(rio.value());
+
+        while (it_left->second.consultar_aforo() > 0 and it_right->second.consultar_aforo() > 0 and it->second.consultar_capacidad() >= 2){
+            mover_barca(it_left->second.consultar_idBarca_petit(), it->first, mis_barcas);
+            mover_barca(it_right->second.consultar_idBarca_petit(), it->first, mis_barcas);
+        }
+        BinTree<string> resultat(rio.value(), rio_left, rio_right);
+        return resultat;
+    }
+
     Rio::Rio(){
         plazas_disp = 0;
         rio = construir_arbol();
@@ -46,10 +72,10 @@
             it->second.baja_barca_est(id_barca);
             mis_barcas.baja_barca_cjt(id_barca);
             ++plazas_disp;
-    } else {
+    }
+} else {
         cout << "error: la barca no existe" << endl;
     }
-}
 }
 
     void Rio::mover_barca(string id_barca, string id_estacion, Cjt_barcas& mis_barcas){
@@ -84,7 +110,9 @@
     }
     }
 
-    void Rio::subir_barcas(Cjt_barcas& mis_barcas){}
+    void Rio::subir_barcas(Cjt_barcas& mis_barcas){
+        subir_barcas_aux(mis_barcas, rio);
+    }
 
     string Rio::asignar_estacion(string id_barca, Cjt_barcas& mis_barcas){
         return ";";
@@ -92,7 +120,12 @@
 
     // Consultores
     
-    void Rio::barca_estacion(string id_estacion){}
+    void Rio::barca_estacion(string id_estacion){
+        auto it =dicc_estacion.find(id_estacion);
+        if (it != dicc_estacion.end()){
+            it->second.imprimir_barcas();
+        }
+    }
 
     void Rio::plazas_libres(){
         cout << plazas_disp << endl;

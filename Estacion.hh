@@ -25,6 +25,10 @@ class Estacion {
 
     // Constructores
 
+    string consultar_idBarca_petit();
+
+    int consultar_aforo();
+
     Estacion(string nom_estacion, int capacidad);
     /* Pre: cert */
     /* Post: el resultat es una barca amb id = nom_estacio*/
@@ -47,7 +51,7 @@ class Estacion {
 
     int consultar_capacidad();
     /* Pre: cert*/
-    /* Post: retornem un enter amb la capacitat total de la estacio */
+    /* Post: retornem un enter amb la capacitat actual de la estacio (capacitat - barques)*/
 
     void imprimir_barcas();
     /* Pre: cert*/

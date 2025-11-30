@@ -57,11 +57,16 @@
 
     void  Cjt_barcas::imprimir_estacion_barca(string id_barca){
        auto it = dicc_barca.find(id_barca);
-       return it->second.imprimir_estacion();
+       if (it != dicc_barca.end()){
+        it->second.imprimir_estacion();
+       }
+       else {
+        cout << "error: la barca no existe" << endl;
+       }
     }
 
     bool Cjt_barcas::existe_barca(string id_barca){
-        return dicc_barca.count(id_barca) > 0;
+        return dicc_barca.count(id_barca);
     }
 
     // Lectura i escriptura

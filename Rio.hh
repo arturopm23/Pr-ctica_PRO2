@@ -25,6 +25,7 @@ class Rio {
       Invariant de la representacio:
             - 
     */
+    BinTree<string> subir_barcas_aux(Cjt_barcas& mis_barcas, BinTree<string> rio);
 
  public:
 
