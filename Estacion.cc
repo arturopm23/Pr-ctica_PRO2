@@ -10,7 +10,7 @@
     // Modificadores
 
     void Estacion::alta_barca_est(string id_barca){
-        if (id_barca.size() < capacidad){
+        if (barcas.size() >= capacidad){
             cout << "error: la barca no cabe" << endl;
         } else if (barcas.count(id_barca)){
             cout << "error: la barca ya esta en el sitio" << endl;

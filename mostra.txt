@@ -1,0 +1,23 @@
+e1 1
+e11 3
+e111 2
+#
+#
+e112 2
+#
+#
+e12 1
+e121 2
+#
+#
+e122 3
+#
+#
+plazas_libres
+alta_barca b1 e12
+barcas_estacion e12
+mover_barca b1 e1
+modificar_capacidad e1 2
+estacion_barca b1
+vb b1
+modificar_capacidad e1 0
