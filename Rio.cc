@@ -97,8 +97,10 @@
     } else {
         if (mis_barcas.existe_barca(id_barca)) {
             string id_est_actual = mis_barcas.estacion_barca(id_barca);
-            auto it_actual = dicc_estacion.find(id_est_actual);
-            if (it_actual != dicc_estacion.end()) {
+            if (id_est_actual == id_estacion){
+                cout << "error: la barca ya esta en el sitio" << endl;
+            } else {
+                auto it_actual = dicc_estacion.find(id_est_actual);
                 it_actual->second.baja_barca_est(id_barca);
                 it_dest->second.alta_barca_est(id_barca);
                 mis_barcas.mover_barca(id_barca, id_estacion);
