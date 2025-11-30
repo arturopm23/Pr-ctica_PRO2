@@ -49,6 +49,8 @@ class Estacion {
     
     // Consultores
 
+    int consultar_capacidad_total();
+
     int consultar_capacidad();
     /* Pre: cert*/
     /* Post: retornem un enter amb la capacitat actual de la estacio (capacitat - barques)*/

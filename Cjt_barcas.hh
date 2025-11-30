@@ -26,7 +26,7 @@ class Cjt_barcas {
 
     // Modificadores
 
-    bool alta_barca_cjt(string id_barca, string id_estacio);
+    void alta_barca_cjt(string id_barca, string id_estacio);
     /* Pre: la barca no existeix*/
     /* Post: la nueva barca forma parte del conjunto, true si incorporamos la barca, false sino*/
 

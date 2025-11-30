@@ -7,16 +7,9 @@
 
     // Modificadores
 
-    bool Cjt_barcas::alta_barca_cjt(string id_barca, string id_estacio){
-        bool result = true;
-        if (dicc_barca.count(id_barca)){
-            result = false;
-            cout << "error: la barca ya existe" << endl;
-        } else {
+    void Cjt_barcas::alta_barca_cjt(string id_barca, string id_estacio){
             Barca b1(id_barca, id_estacio);
             dicc_barca.emplace(id_barca, b1);
-        }
-        return result;
     }
 
     void Cjt_barcas::baja_barca_cjt(string id_barca){

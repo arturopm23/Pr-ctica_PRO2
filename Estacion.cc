@@ -26,11 +26,7 @@
     }
 
     void Estacion::nueva_capacidad(int nova_cap){
-        if (barcas.size() <= nova_cap){
             capacidad = nova_cap;
-        } else {
-            cout << "error: capacidad insuficiente" << endl;
-        }
     }
     
     // Consultores
@@ -48,6 +44,10 @@
 
     int Estacion::consultar_capacidad(){
         return capacidad - barcas.size();
+    }
+
+        int Estacion::consultar_capacidad_total(){
+        return capacidad;
     }
 
     int Estacion::consultar_aforo(){

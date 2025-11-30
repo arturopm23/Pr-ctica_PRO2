@@ -25,7 +25,7 @@ class Rio {
       Invariant de la representacio:
             - 
     */
-    BinTree<string> subir_barcas_aux(Cjt_barcas& mis_barcas, BinTree<string> rio);
+    void subir_barcas_aux(Cjt_barcas& mis_barcas, const BinTree<string>& rio);
 
  public:
 
@@ -36,6 +36,8 @@ class Rio {
     /* Post: el resultat es un riu amb les seves estacions i un conjunt de barques*/
 
     // Modificadores
+
+    pair<string,int > asignar_estacion_aux(const BinTree<string>& rio);
 
     void alta_barca(string id_barca, string id_estacion, Cjt_barcas& mis_barcas);
     /* Pre: la barca no existeix i la estacio no esta plena */
@@ -58,7 +60,7 @@ class Rio {
     /* Post: Intentarem afegir a una estació pare parells de barques de les filles
     fins que la estació para s'ompli o una de les filles es buidi*/
 
-    string asignar_estacion(string id_barca, Cjt_barcas& mis_barcas);
+    void asignar_estacion(string id_barca, Cjt_barcas& mis_barcas);
     /* Pre: la barca no existeix i tenim espai */
     /* Post: Assignem la barca a una nova estació amb menys ocupació
     (pl.ocupades/pl.totals) retorna l'id de la estació destí*/
