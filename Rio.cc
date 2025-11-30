@@ -166,6 +166,8 @@
         auto it =dicc_estacion.find(id_estacion);
         if (it != dicc_estacion.end()){
             it->second.imprimir_barcas();
+        } else {
+            cout << "error: la estacion no existe" << endl;
         }
     }
 
