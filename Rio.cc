@@ -17,6 +17,58 @@
         return BinTree<string>(id, left, right);
     }
 
+    pair<string, pair<double,int>> Rio::asignar_estacion_aux(const BinTree<string>& rio, int prof){
+    if (rio.empty()){
+        return make_pair("", make_pair(2.0, -1)); // ocupación imposible
+    }
+
+    auto rio_left  = asignar_estacion_aux(rio.left(), prof + 1);
+    auto rio_right = asignar_estacion_aux(rio.right(), prof + 1);
+
+    double ocupacio =
+        double(dicc_estacion.at(rio.value()).consultar_aforo()) /
+        dicc_estacion.at(rio.value()).consultar_capacidad_total();
+
+    pair<string, pair<double,int>> actual =
+        make_pair(rio.value(), make_pair(ocupacio, prof));
+
+    // Empezamos suponiendo que el mejor es el actual
+    auto mejor = actual;
+
+    // Comparación con el hijo izquierdo
+    if (rio_left.first != "") {
+        if (rio_left.second.first < mejor.second.first ||
+           (rio_left.second.first == mejor.second.first &&
+            rio_left.second.second < mejor.second.second)) {
+            mejor = rio_left;
+        }
+    }
+
+    // Comparación con el hijo derecho
+    if (rio_right.first != "") {
+        if (rio_right.second.first < mejor.second.first ||
+           (rio_right.second.first == mejor.second.first &&
+            rio_right.second.second < mejor.second.second)) {
+            mejor = rio_right;
+        }
+    }
+
+    return mejor;
+}
+
+
+    void Rio::asignar_estacion(string id_barca, Cjt_barcas& mis_barcas){
+     if (mis_barcas.existe_barca(id_barca)){
+        cout << "error: la barca ya existe" << endl;
+    } else if (plazas_disp < 1){
+        cout << "error: no hay plazas libres" << endl;
+    } else {
+        pair<string, pair<double,int>> result = asignar_estacion_aux(rio, 0);
+        cout << result.first << endl;
+        alta_barca(id_barca, result.first, mis_barcas);
+    }
+    }
+
     void Rio::subir_barcas_aux(Cjt_barcas& mis_barcas, const BinTree<string>& rio){
         if (rio.empty()){
             return;
@@ -51,6 +103,11 @@
         }
         return;
     }
+
+    void Rio::subir_barcas(Cjt_barcas& mis_barcas){
+        subir_barcas_aux(mis_barcas, rio);
+    }
+
 
     Rio::Rio(){
         plazas_disp = 0;
@@ -123,40 +180,6 @@
         } else {
             cout << "error: capacidad insuficiente" << endl;
         }
-    }
-    }
-
-    void Rio::subir_barcas(Cjt_barcas& mis_barcas){
-        subir_barcas_aux(mis_barcas, rio);
-    }
-
-        pair<string,double > Rio::asignar_estacion_aux(const BinTree<string>& rio){
-            if (rio.empty()){
-                return make_pair("",1);
-            }
-            pair<string,double > rio_left = asignar_estacion_aux(rio.left());
-            pair<string,double > rio_right = asignar_estacion_aux(rio.right());
-
-            double ocupacio = (dicc_estacion.at(rio.value()).consultar_aforo()) / double(dicc_estacion.at(rio.value()).consultar_capacidad_total());
-
-            if (ocupacio <= rio_left.second and ocupacio <= rio_right.second){
-                return make_pair(rio.value(), ocupacio);
-            } else if (rio_right.second < rio_left.second){
-                return rio_right;
-            } else {
-                return rio_left;
-            }
-        }
-
-    void Rio::asignar_estacion(string id_barca, Cjt_barcas& mis_barcas){
-     if (mis_barcas.existe_barca(id_barca)){
-        cout << "error: la barca ya existe" << endl;
-    } else if (plazas_disp < 1){
-        cout << "error: no hay plazas libres" << endl;
-    } else {
-        pair<string, double> result = asignar_estacion_aux(rio);
-        cout << result.first << endl;
-        alta_barca(id_barca, result.first, mis_barcas);
     }
     }
 

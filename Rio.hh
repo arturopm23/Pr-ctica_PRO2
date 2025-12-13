@@ -27,7 +27,7 @@ class Rio {
     */
     void subir_barcas_aux(Cjt_barcas& mis_barcas, const BinTree<string>& rio);
 
-    pair<string,double > asignar_estacion_aux(const BinTree<string>& rio);
+    pair<string, pair<double,int>> asignar_estacion_aux(const BinTree<string>& rio, int prof);
 
  public:
 
