@@ -1,4 +1,5 @@
 #include "Rio.hh"
+
     // Constructores
 
     BinTree<string> Rio::construir_arbol(){
@@ -69,44 +70,48 @@
     }
     }
 
-    void Rio::subir_barcas_aux(Cjt_barcas& mis_barcas, const BinTree<string>& rio){
-        if (rio.empty()){
-            return;
-        }
+    void Rio::subir_en_nodo(Cjt_barcas& mis_barcas, const BinTree<string>& rio){
+    if (rio.left().empty() or rio.right().empty()) return;
 
-        subir_barcas_aux(mis_barcas, rio.left());
-        subir_barcas_aux(mis_barcas, rio.right());
+    auto it_left  = dicc_estacion.find(rio.left().value());
+    auto it_right = dicc_estacion.find(rio.right().value());
+    auto it       = dicc_estacion.find(rio.value());
 
-        if (rio.left().empty() or rio.right().empty()){
-            return;
-        }
+    while ( it->second.consultar_capacidad() >= 2 &&
+            it_left->second.consultar_aforo() > 0 &&
+            it_right->second.consultar_aforo() > 0 ) {
 
-        auto it_left = dicc_estacion.find(rio.left().value());
-        auto it_right = dicc_estacion.find(rio.right().value());
-        auto it = dicc_estacion.find(rio.value());
+        string b1 = it_left->second.consultar_idBarca_petit();
+        string b2 = it_right->second.consultar_idBarca_petit();
 
-        int it_left_aforo = it_left->second.consultar_aforo();
-        int it_right_aforo = it_right->second.consultar_aforo();
-        int it_capacidad = it->second.consultar_capacidad();
+        it_left->second.baja_barca_est(b1);
+        it_right->second.baja_barca_est(b2);
 
-        int voltes = it_capacidad/2;
-        if (it_left_aforo < voltes){
-            voltes = it_left_aforo;
-        }
-        if (it_right_aforo < voltes){
-            voltes = it_right_aforo;
-        }
+        it->second.alta_barca_est(b1);
+        it->second.alta_barca_est(b2);
 
-       for (int i = 0; i < voltes; ++i){
-            mover_barca(it_left->second.consultar_idBarca_petit(), it->first, mis_barcas);
-            mover_barca(it_right->second.consultar_idBarca_petit(), it->first, mis_barcas);
-        }
-        return;
+        mis_barcas.mover_barca(b1, it->first);
+        mis_barcas.mover_barca(b2, it->first);
     }
+}
+
 
     void Rio::subir_barcas(Cjt_barcas& mis_barcas){
-        subir_barcas_aux(mis_barcas, rio);
+    queue<BinTree<string>> q;
+    q.push(rio);
+
+    while (!q.empty()){
+        BinTree<string> act = q.front();
+        q.pop();
+
+        if (!act.empty()){
+            subir_en_nodo(mis_barcas, act);
+            q.push(act.left());
+            q.push(act.right());
+        }
     }
+}
+
 
 
     Rio::Rio(){
